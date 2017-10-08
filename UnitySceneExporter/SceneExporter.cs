@@ -147,7 +147,7 @@ namespace UnitySceneExporter
                 method = tempInstance.GetInstancedMethod(methodName);
                 if (method == null) continue;
 
-                returnData.Add(type, method.Invoke(null, parameters) as List<SceneItem>);
+                returnData.Add(type, method.Invoke(tempInstance, parameters) as List<SceneItem>);
 
                 // reset
                 tempInstance = null;
