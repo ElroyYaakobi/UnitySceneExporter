@@ -18,13 +18,12 @@ namespace UnitySceneExporter
             var items = GetAllTypes();
             items.CallSerializationMethod("Export", serializer);
 
-            return serializer.Data;
+            return serializer.data;
         }
-
         public static Scene Import(byte[] data)
         {
             var scene = new Scene();
-            var serializer = new BinaryFormatterSerializer { Data = data };
+            var serializer = new BinaryFormatterSerializer { data = data };
 
             var items = GetAllTypes();
             scene.SceneItems = items.CallSerializationMethod("Import", serializer);

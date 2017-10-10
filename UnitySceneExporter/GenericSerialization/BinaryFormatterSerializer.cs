@@ -9,20 +9,25 @@ namespace UnitySceneExporter.GenericSerialization
         private readonly BinaryFormatter binaryFormatter = new BinaryFormatter();
         private MemoryStream memoryStream = new MemoryStream();
 
-        public byte[] Data
+        public byte[] data
         {
-            get => memoryStream.ToArray();
-            set => memoryStream = new MemoryStream(value);
+            get
+            {
+                return memoryStream.ToArray();
+            }
+            set
+            {
+                memoryStream = new MemoryStream(value);
+            }
         }
 
         public void Serialize(object obj)
         {
-            throw new NotImplementedException();
+            binaryFormatter.Serialize(memoryStream, obj);
         }
-
-        public void Deserialize(object obj)
+        public object Deserialize()
         {
-            throw new NotImplementedException();
+            return binaryFormatter.Deserialize(memoryStream);
         }
     }
 }

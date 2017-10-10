@@ -8,10 +8,11 @@ namespace UnitySceneExporter
     {
         internal Dictionary<Type, List<SceneItem>> SceneItems { get; set; } = new Dictionary<Type, List<SceneItem>>();
 
-        public List<T> GetItems<T>() 
-            where T : SceneItem
+        public List<T> GetItems<T>() where T : SceneItem
         {
-            SceneItems.TryGetValue(typeof(T), out var items);
+            List<SceneItem> items;
+
+            SceneItems.TryGetValue(typeof(T), out items);
             return items?.Cast<T>().ToList();
         }
     }
